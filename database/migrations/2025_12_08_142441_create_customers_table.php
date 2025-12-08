@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('nationality');
             $table->string('email')->unique();
             $table->string('phone_number');
-            $table->string('password_hash');
+            $table->string('password');
             $table->string('status');
             $table->timestamps();
         });

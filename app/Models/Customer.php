@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * @property int $id
@@ -15,7 +19,7 @@ use Illuminate\Support\Carbon;
  * @property string $nationality
  * @property string $email
  * @property string $phone_number
- * @property string $password_hash
+ * @property string $password
  * @property string $status
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -24,8 +28,10 @@ use Illuminate\Support\Carbon;
  * @property-read CustomerAddress|null $customerAddress
  * @property-read Collection<int, KycDocument> $kycDocuments
  */
-class Customer extends Model
+class Customer extends Authenticatable
 {
+    use HasApiTokens, Notifiable, TwoFactorAuthenticatable;
+
     public function accounts(): HasMany
     {
         return $this->hasMany(Account::class);
