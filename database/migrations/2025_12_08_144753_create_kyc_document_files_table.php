@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\KycDocument;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -9,6 +10,7 @@ return new class extends Migration {
     {
         Schema::create('kyc_document_files', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(KycDocument::class)->constrained();
             $table->ulid('object_key')->unique();
             $table->string('bucket_name');
             $table->string('original_filename');
