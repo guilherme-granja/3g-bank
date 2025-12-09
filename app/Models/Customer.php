@@ -32,6 +32,24 @@ class Customer extends Authenticatable
 {
     use HasApiTokens, Notifiable, TwoFactorAuthenticatable;
 
+    protected $fillable = [
+        'full_name',
+        'email',
+        'password',
+        'status',
+    ];
+
+    protected $hidden = [
+        'password',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+    ];
+
+    protected $casts = [
+        'password' => 'hashed',
+        'two_factor_confirmed_at' => 'datetime',
+    ];
+
     public function accounts(): HasMany
     {
         return $this->hasMany(Account::class);
