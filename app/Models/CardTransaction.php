@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Models\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
@@ -22,6 +23,8 @@ use Illuminate\Support\Carbon;
  */
 class CardTransaction extends Model
 {
+    use HasUlids;
+
     public function card(): BelongsTo
     {
         return $this->belongsTo(Card::class);

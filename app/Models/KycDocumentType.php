@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Models\HasUlids;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class KycDocumentType extends Model
 {
+    use HasUlids;
+
     public function KycDocuments(): HasMany
     {
         return $this->hasMany(KycDocument::class);
