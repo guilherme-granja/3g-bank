@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
+use App\States\Customers\CustomerState;
+use App\Traits\Models\HasUlids;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
@@ -11,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Passport\HasApiTokens;
+use Spatie\ModelStates\HasStates;
 
 /**
  * @property int $id
@@ -30,13 +32,16 @@ use Laravel\Passport\HasApiTokens;
  */
 class Customer extends Authenticatable
 {
-    use HasApiTokens, Notifiable, TwoFactorAuthenticatable;
+    use HasApiTokens, Notifiable, TwoFactorAuthenticatable, HasUlids, HasStates;
 
     protected $fillable = [
         'full_name',
         'email',
         'password',
         'status',
+        'date_of_birth',
+        'nationality',
+        'phone_number',
     ];
 
     protected $hidden = [
@@ -48,6 +53,7 @@ class Customer extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
         'two_factor_confirmed_at' => 'datetime',
+        'status' => CustomerState::class,
     ];
 
     public function accounts(): HasMany
