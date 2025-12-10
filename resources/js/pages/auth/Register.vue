@@ -26,18 +26,18 @@ import { Form, Head } from '@inertiajs/vue3';
         >
             <div class="grid gap-6">
                 <div class="grid gap-2">
-                    <Label for="name">Name</Label>
+                    <Label for="full_name">Full Name</Label>
                     <Input
-                        id="name"
+                        id="full_name"
                         type="text"
                         required
                         autofocus
                         :tabindex="1"
-                        autocomplete="name"
-                        name="name"
+                        autocomplete="full_name"
+                        name="full_name"
                         placeholder="Full name"
                     />
-                    <InputError :message="errors.name" />
+                    <InputError :message="errors.full_name" />
                 </div>
 
                 <div class="grid gap-2">
@@ -52,6 +52,47 @@ import { Form, Head } from '@inertiajs/vue3';
                         placeholder="email@example.com"
                     />
                     <InputError :message="errors.email" />
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="nationality">Nationality</Label>
+                    <Input
+                        id="nationality"
+                        type="text"
+                        required
+                        :tabindex="2"
+                        autocomplete="nationality"
+                        name="nationality"
+                        placeholder="Brazilian"
+                    />
+                    <InputError :message="errors.nationality" />
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="phone_number">Phone number</Label>
+                    <Input
+                        id="phone_number"
+                        type="text"
+                        required
+                        :tabindex="2"
+                        autocomplete="phone_number"
+                        name="phone_number"
+                        placeholder="+351961804540"
+                    />
+                    <InputError :message="errors.phone_number" />
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="date_of_birth">Date of birth</Label>
+                    <Input
+                        id="date_of_birth"
+                        type="date"
+                        required
+                        :tabindex="2"
+                        autocomplete="date_of_birth"
+                        name="date_of_birth"
+                    />
+                    <InputError :message="errors.date_of_birth" />
                 </div>
 
                 <div class="grid gap-2">
