@@ -40,7 +40,7 @@ const user = page.props.auth.user;
             <div class="flex flex-col space-y-6">
                 <HeadingSmall
                     title="Profile information"
-                    description="Update your name and email address"
+                    description="Update your full name and email address"
                 />
 
                 <Form
@@ -49,14 +49,14 @@ const user = page.props.auth.user;
                     v-slot="{ errors, processing, recentlySuccessful }"
                 >
                     <div class="grid gap-2">
-                        <Label for="name">Name</Label>
+                        <Label for="full_name">Full name</Label>
                         <Input
-                            id="name"
+                            id="full_name"
                             class="mt-1 block w-full"
-                            name="name"
-                            :default-value="user.name"
+                            name="full_name"
+                            :default-value="user.full_name"
                             required
-                            autocomplete="name"
+                            autocomplete="full_name"
                             placeholder="Full name"
                         />
                         <InputError class="mt-2" :message="errors.name" />
