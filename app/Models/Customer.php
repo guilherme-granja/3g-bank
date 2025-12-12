@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\States\Customers\CustomerState;
 use App\Traits\Models\HasUlids;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -16,13 +17,18 @@ use Spatie\ModelStates\HasStates;
 
 /**
  * @property int $id
+ * @property string $ulid
+ * @property string $status
  * @property string $full_name
  * @property string $date_of_birth
  * @property string $nationality
- * @property string $email
  * @property string $phone_number
+ * @property string $email
+ * @property Carbon|null $email_verified_at
  * @property string $password
- * @property string $status
+ * @property string|null $two_factor_secret
+ * @property string|null $two_factor_recovery_codes
+ * @property Carbon|null $two_factor_confirmed_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Collection<int, Account> $accounts
@@ -32,7 +38,7 @@ use Spatie\ModelStates\HasStates;
  */
 class Customer extends Authenticatable
 {
-    use HasApiTokens, Notifiable, TwoFactorAuthenticatable, HasUlids, HasStates;
+    use HasApiTokens, Notifiable, TwoFactorAuthenticatable, HasUlids, HasStates, MustVerifyEmail;
 
     protected $fillable = [
         'full_name',

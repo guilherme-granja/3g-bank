@@ -14,8 +14,9 @@ return new class extends Migration {
             $table->string('full_name');
             $table->string('date_of_birth');
             $table->string('nationality');
-            $table->string('email')->unique();
             $table->string('phone_number');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at');
             $table->string('password');
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();
