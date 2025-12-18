@@ -1,3 +1,12 @@
+<style>
+.barriecito-regular {
+    font-family: "Barriecito", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+}
+</style>
+
 <template>
     <svg
         :width="width"
@@ -8,14 +17,12 @@
         <rect width="300" height="340" fill="black"/>
 
         <g fill="white">
-            <rect x="40" y="70" width="70" height="70" rx="12"/>
-            <rect x="40" y="160" width="70" height="70" rx="12"/>
-            <path d="M150 70 Q220 70 220 140 Q220 210 150 210 Z"/>
+            <rect x="75" y="70" width="70" height="70" rx="12"/>
+            <rect x="75" y="160" width="70" height="70" rx="12"/>
+            <rect x="160" y="110" width="70" height="70" rx="12"/>
         </g>
 
-        <text x="50%" y="295" fill="white"
-              font-family="Arial Black, sans-serif"
-              font-size="42" text-anchor="middle" letter-spacing="3">
+        <text x="50%" y="295" fill="white" class="barriecito-regular" text-anchor="middle">
             3G BANK
         </text>
     </svg>
