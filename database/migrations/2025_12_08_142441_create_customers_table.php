@@ -10,13 +10,14 @@ return new class extends Migration {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->ulid()->unique();
+            $table->string('nif')->unique();
             $table->string('status');
             $table->string('full_name');
             $table->string('date_of_birth');
             $table->string('nationality');
             $table->string('phone_number');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->text('two_factor_secret')->nullable();
             $table->text('two_factor_recovery_codes')->nullable();
