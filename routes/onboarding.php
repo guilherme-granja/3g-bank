@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\CheckNifController;
+use App\Http\Controllers\Web\Onboarding\CheckNifController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('onboarding')->group(function () {
