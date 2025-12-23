@@ -6,6 +6,9 @@ ARG POSTGRES_VERSION=18
 
 WORKDIR /var/www/html
 
+COPY ../../package.json ./
+COPY ../../package-lock.json ./
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
 ENV SUPERVISOR_PHP_COMMAND="/usr/bin/php -d variables_order=EGPCS /var/www/html/artisan octane:start --watch --server=swoole --host=0.0.0.0 --port=80"
@@ -60,11 +63,15 @@ RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 RUN git config --global --add safe.directory /var/www/html
 
-COPY start-container /usr/local/bin/start-container
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
+COPY docker/local/start-container /usr/local/bin/start-container
+COPY docker/local/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/local/php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
 
+RUN npm install
+RUN chown -R sail:sail /var/www/html/node_modules
+
 EXPOSE 7000/tcp
+EXPOSE 5173/tcp
 
 ENTRYPOINT ["start-container"]

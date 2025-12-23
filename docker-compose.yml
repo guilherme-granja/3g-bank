@@ -1,8 +1,8 @@
 services:
   laravel.test:
     build:
-      context: docker/local
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: docker/local/Dockerfile
       args:
         WWWGROUP: '${WWWGROUP}'
     image: sail-8.5/app
