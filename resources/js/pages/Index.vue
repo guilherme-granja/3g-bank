@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { register } from '@/routes';
+import { checkNif } from '@/routes/auth';
 import { Head, Link } from '@inertiajs/vue3';
 import AppLogo from '@/components/AppLogo.vue';
 import { Button } from '@/components/ui/button';
 </script>
 
 <template>
-    <Head title="Welcome">
+    <Head title="3G Bank">
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     </Head>
@@ -86,7 +86,7 @@ import { Button } from '@/components/ui/button';
                         <li>
                             <Button>
                                 <Link
-                                    :href="register()"
+                                    :href="checkNif().url"
                                 >
                                     Get Started
                                 </Link>
