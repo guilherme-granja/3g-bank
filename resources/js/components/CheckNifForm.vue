@@ -13,6 +13,19 @@ const isLoading = ref(false);
 
 const { getNumericNif, isValidNif } = useNifFormatter(nif);
 
+const onInput = (event: Event) => {
+    const input = event.target as HTMLInputElement;
+
+    const digits = input.value.replace(/\D/g, '');
+
+    if (digits.length > 9) {
+        input.value = nif.value;
+        return;
+    }
+
+    nif.value = input.value;
+};
+
 const handleCheckNif = async () => {
     const numericNif = getNumericNif();
 
@@ -45,6 +58,7 @@ const handleCheckNif = async () => {
         <div class="grid gap-2">
             <Input
                 v-model="nif"
+                @input="onInput"
                 type="text"
                 placeholder="000.000.000"
                 class="h-12 text-lg"

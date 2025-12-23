@@ -1,12 +1,8 @@
 import { type Ref, watch } from 'vue';
 
 export function useNifFormatter(nif: Ref<string>) {
-    watch(nif, (newValue) => {
-        let digits = newValue.replace(/\D/g, '');
-
-        if (digits.length > 9) {
-            digits = digits.slice(0, 9);
-        }
+    watch(nif, (newValue = '') => {
+        const digits = newValue.replace(/\D/g, '').slice(0, 9);
 
         let formatted = '';
         for (let i = 0; i < digits.length; i++) {
@@ -21,7 +17,7 @@ export function useNifFormatter(nif: Ref<string>) {
         }
     });
 
-    const getNumericNif = () => nif.value.replace(/\D/g, '');
+    const getNumericNif = () => nif.value.replace(/\D/g, '').slice(0, 9);
 
     const isValidNif = () => getNumericNif().length === 9;
 
