@@ -1,0 +1,15 @@
+{
+    "agents": [
+        "claude_code",
+        "cursor",
+        "gemini",
+        "phpstorm"
+    ],
+    "editors": [
+        "phpstorm"
+    ],
+    "guidelines": [
+        "laravel/fortify"
+    ],
+    "sail": true
+}
