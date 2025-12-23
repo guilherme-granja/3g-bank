@@ -44,7 +44,7 @@ const handleCheckNif = () => {
                             <Input
                                 v-model="nif"
                                 type="text"
-                                placeholder="NIF"
+                                placeholder="000000000"
                                 class="h-12 text-lg"
                                 autofocus
                             />
