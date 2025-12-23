@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Web\Onboarding\CheckNifController;
+use App\Http\Controllers\Web\Onboarding\CheckNifPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('onboarding')->group(function () {
-    Route::get('', CheckNifController::class)
+    Route::get('', CheckNifPageController::class)
         ->name('auth.check-nif');
 });
