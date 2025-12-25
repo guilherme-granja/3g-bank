@@ -11,8 +11,6 @@ return new class extends Migration {
             $table->id();
             $table->ulid()->unique();
             $table->string('code')->unique();
-            $table->string('description')->nullable();
-            $table->boolean('required');
         });
     }
 
