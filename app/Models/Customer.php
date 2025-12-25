@@ -41,6 +41,7 @@ class Customer extends Authenticatable
     use HasApiTokens, HasStates, HasUlids, MustVerifyEmail, Notifiable, TwoFactorAuthenticatable;
 
     protected $fillable = [
+        'nif',
         'full_name',
         'email',
         'password',

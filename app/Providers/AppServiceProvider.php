@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Services\Contracts\CustomerServiceContract;
-use App\Services\Customer\CustomerServiceService;
+use App\Services\Customer\CustomerService;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(CustomerServiceContract::class, CustomerServiceService::class);
+        $this->app->bind(CustomerServiceContract::class, CustomerService::class);
     }
 
     /**
