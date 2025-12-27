@@ -10,8 +10,8 @@ class CheckNifController extends Controller
 {
     public function __invoke(CheckNifRequest $request)
     {
-        $data = resolve(CheckCustomerNifAction::class)($request);
+        $response = resolve(CheckCustomerNifAction::class)($request);
 
-        return response()->json($data);
+        return response()->json($response);
     }
 }
