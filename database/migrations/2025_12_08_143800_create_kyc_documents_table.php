@@ -15,14 +15,20 @@ return new class extends Migration {
             $table->ulid()->unique();
             $table->foreignIdFor(Customer::class)->constrained();
             $table->foreignIdFor(KycDocumentType::class)->constrained();
-            $table->string('status');
+            $table->string('status')->index();
+            $table->integer('current_version')->default(1);
             $table->text('rejection_reason')->nullable();
-            $table->timestamp('expires_at')->nullable();
+            $table->timestamp('expires_at')->nullable()->index();
             $table->foreignIdFor(User::class, 'reviewed_by_user_id')
                 ->nullable()
                 ->constrained();
             $table->timestamp('reviewed_at')->nullable();
             $table->timestamp('created_at');
+
+            $table->unique(['customer_id', 'kyc_document_type_id', 'status', 'current_version']);
+            $table->index(['status', 'created_at']);
+            $table->index(['reviewed_by_user_id', 'reviewed_at']);
+            $table->index(['customer_id', 'created_at']);
         });
     }
 

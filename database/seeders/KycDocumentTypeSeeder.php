@@ -14,6 +14,7 @@ class KycDocumentTypeSeeder extends Seeder
             ['code' => 'PP'],
             ['code' => 'AR'],
             ['code' => 'CM'],
+            ['code' => 'CR']
         ])->each(
             callback: fn (array $data) => KycDocumentType::query()->create($data)
         );

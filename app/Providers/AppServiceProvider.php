@@ -2,8 +2,18 @@
 
 namespace App\Providers;
 
+use App\Services\Contracts\CustomerAddressServiceContract;
 use App\Services\Contracts\CustomerServiceContract;
+use App\Services\Contracts\FileStorageServiceContract;
+use App\Services\Contracts\KycDocumentFileServiceContract;
+use App\Services\Contracts\KycDocumentServiceContract;
+use App\Services\Contracts\KycDocumentTypeServiceContract;
 use App\Services\Customer\CustomerService;
+use App\Services\CustomerAddress\CustomerAddressService;
+use App\Services\FileStorage\FileStorageService;
+use App\Services\KycDocument\KycDocumentFileService;
+use App\Services\KycDocument\KycDocumentService;
+use App\Services\KycDocument\KycDocumentTypeService;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -12,17 +22,16 @@ use Laravel\Passport\Passport;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         $this->app->bind(CustomerServiceContract::class, CustomerService::class);
+        $this->app->bind(CustomerAddressServiceContract::class, CustomerAddressService::class);
+        $this->app->bind(KycDocumentTypeServiceContract::class, KycDocumentTypeService::class);
+        $this->app->bind(KycDocumentServiceContract::class, KycDocumentService::class);
+        $this->app->bind(KycDocumentFileServiceContract::class, KycDocumentFileService::class);
+        $this->app->bind(FileStorageServiceContract::class, FileStorageService::class);
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         $this->configurePassport();

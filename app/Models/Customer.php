@@ -18,7 +18,8 @@ use Spatie\ModelStates\HasStates;
 /**
  * @property int $id
  * @property string $ulid
- * @property string $status
+ * @property string $nif
+ * @property CustomerState $status
  * @property string $full_name
  * @property string $date_of_birth
  * @property string $nationality

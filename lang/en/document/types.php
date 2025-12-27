@@ -6,5 +6,6 @@ return [
         'pp' => 'Passport',
         'ar' => 'Residence Permit',
         'cm' => 'Proof of Address',
+        'cr' => 'Proof of Income',
     ],
 ];

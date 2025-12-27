@@ -1,17 +1,17 @@
 <?php
 
-namespace App\States\Customers;
+namespace App\States\KycDocuments;
 
 use Spatie\ModelStates\State;
 use Spatie\ModelStates\StateConfig;
 
-abstract class CustomerState extends State
+abstract class KycDocumentState extends State
 {
     abstract public function labelColor(): string;
 
     public static function config(): StateConfig
     {
         return parent::config()
-            ->default(AwaitingValidation::class);
+            ->default(PendingValidation::class);
     }
 }

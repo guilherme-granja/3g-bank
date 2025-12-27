@@ -8,6 +8,7 @@ enum KycDocumentTypeEnum: string
     case PP = 'PP';
     case AR = 'AR';
     case CM = 'CM';
+    case CR = 'CR';
 
     public function label(): string
     {
@@ -16,6 +17,7 @@ enum KycDocumentTypeEnum: string
             self::PP => __('document/types.label.pp'),
             self::AR => __('document/types.label.ar'),
             self::CM => __('document/types.label.cm'),
+            self::CR => __('document/types.label.cr'),
         };
     }
 }
